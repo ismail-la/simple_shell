@@ -7,8 +7,7 @@
  */
 int main(int argc, char **argv)
 {
-char **Sep_commands, *LineInput;
-char **cmd;
+char **Sep_commands, **cmd, *LineInput;
 int Case_stat = 0, j = 0, i, status = 1;
 if (argc > 1)
 	readFD(argv[1], argv);
@@ -20,7 +19,6 @@ while (status)
 j++;
 if (isatty(STDIN_FILENO))
 	_prompt();
-/*****Custom getline()*/
 LineInput = readgetline();
 if (LineInput[0] == '\0')
 	continue;
@@ -30,16 +28,20 @@ for (i = 0; Sep_commands[i] != NULL; i++)
 {
 cmd = parse_command(Sep_commands[i]);
 if (str_cmp(cmd[0], "exit") == 0)
+{
 	free(Sep_commands);
 	Status_exit__bul(cmd, LineInput, argv, j, Case_stat);
+}
 else if (cmd_check_builtin(cmd) == 0)
 {
-Case_stat = handle_builtin(cmd, Case_stat);
-free(cmd);
-continue;
+	Case_stat = handle_builtin(cmd, Case_stat);
+	free(cmd);
+	continue;
 }
 else
+{
 	Case_stat = fork_check_cmd(cmd, LineInput, j, argv);
+}
 free(cmd);
 }
 free(LineInput);
