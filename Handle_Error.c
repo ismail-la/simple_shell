@@ -5,7 +5,7 @@
  * @user_INPUT: user input received
  * @timer: loop counter
  * @argv: Arguments before program starts
- * 
+ *
  */
 
 void Error_display(char *user_INPUT, int timer, char **argv)

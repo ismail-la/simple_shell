@@ -1,5 +1,4 @@
 #include "shell.h"
-
 /**
  * Delim_check - checks if a character
  * matchs any character
@@ -32,19 +31,12 @@ return (0);
 char *F_strtok(char *string, const char *d)
 {
 unsigned int j;
-static char *Tokens;
-static char *TokenNew;
-
-
+static char *Tokens, *TokenNew;
 if (string != NULL)
-{
-TokenNew = string;
-}
+	TokenNew = string;
 Tokens = TokenNew;
 if (Tokens == NULL)
-{
-return (NULL);
-}
+	return (NULL);
 for (j = 0; Tokens[j] != '\0'; j++)
 {
 if (Delim_check(Tokens[j], d) == 0)
@@ -67,17 +59,13 @@ break;
 }
 }
 if (TokenNew[j] == '\0')
-{
-TokenNew = NULL;
-}
+	TokenNew = NULL;
 else
 {
 TokenNew[j] = '\0';
 TokenNew = TokenNew + j + 1;
 if (*TokenNew == '\0')
-{
-TokenNew = NULL;
-}
+	TokenNew = NULL;
 }
 return (Tokens);
 }
