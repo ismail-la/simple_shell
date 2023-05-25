@@ -16,16 +16,20 @@ if (*cmd == NULL)
 	return (EXIT_FAILURE);
 pid_c = fork();
 if (pid_c == -1)
-	perror("Error");
-	return (-1);
+{
+perror("Error");
+return (-1);
+}
 if (pid_c == 0)
 {
 if (F_strncmp(*cmd, "./", 2) != 0 && F_strncmp(*cmd, "/", 1) != 0)
 	command_path(cmd);
 if (access(cmd[0], R_OK) != 0)
-	Error_display(cmd[0], c, argv);
-	free_all(cmd, input);
-	exit(127);
+{
+Error_display(cmd[0], c, argv);
+free_all(cmd, input);
+exit(127);
+}
 if (execve(*cmd, cmd, environ) == -1)
 	return (2);
 else
@@ -36,23 +40,17 @@ return (0);
 wait(&Status);
 if (WIFEXITED(Status))
 {
-if (WEXITSTATUS(Status) == 0)
-	return (0);
-else if (WEXITSTATUS(Status) == 127)
-{
-return (127);
+	if (WEXITSTATUS(Status) == 0)
+		return (0);
+	else if (WEXITSTATUS(Status) == 127)
+		return (127);
 }
 else if (WEXITSTATUS(Status) == 2)
-{
-return (2);
-}
-
-}
+	return (2);
 return (127);
 }
 /**
- * Handle_signal - This function handles the SIGINT signal
- * by printing "$ " on a new line.
+ * Handle_signal - handles the SIGINT signal by printing "$ " on a new line.
  * @signal: Input Signal
  */
 void Handle_signal(int signal)
