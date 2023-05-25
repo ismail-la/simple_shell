@@ -1,6 +1,6 @@
 #include "shell.h"
 /**
- * main - entry point
+ * main - the entry point
  * @argc: the Argument count
  * @argv: the Argument vector
  * Return: Returns status 0 on success
