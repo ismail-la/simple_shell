@@ -1,3 +1,5 @@
-lahbari ismail lahbariismail@gmail.com
+This file lists all contributors:
 
-sekaina saoud
+lahbari ismail : lahbariismail@gmail.com
+
+sekaina saoud : soukainasaoud54@gmail.com

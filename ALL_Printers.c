@@ -1,47 +1,53 @@
 #include "shell.h"
 
 /**
- * print_number_int - Prints integers using _putchar function
- * @n: Integer to be printed
+ * Number_int_print - This function prints integers using
+ * the _putchar function.
+ * @Num: Integer The integer to be printed is passed as the parameter Num.
+ *
  */
-void print_number_int(int n)
+void Number_int_print(int Num)
 {
-unsigned int x = n;
-if (n < 0)
+unsigned int b = Num;
+if (Num < 0)
 {
 F_putchar('-');
-x = -x;
+b = -b;
 }
-if ((x / 10) > 0)
+if ((b / 10) > 0)
 {
-print_number(x / 10);
+Number_print(b / 10);
 }
-F_putchar(x % 10 + '0');
+F_putchar(b % 10 + '0');
 }
 
 /**
- * print_number - Prints unsigned integers using F_putchar function
- * @n: Unsigned integer to be printed
+ * Number_print -  The name of the function that prints
+ * unsigned integers using _putchar function.
+ * @Num:  Passes an unsigned integer as a parameter to the function.
+ *
  */
-void print_number(unsigned int n)
+void Number_print(unsigned int Num)
 {
-unsigned int x = n;
-if ((x / 10) > 0)
-print_number(x / 10);
-F_putchar(x % 10 + '0');
+unsigned int b = Num;
+if ((b / 10) > 0)
+Number_print(b / 10);
+F_putchar(b % 10 + '0');
 }
 
 /**
- * print_echo - Executes built-in echo function
- * @cmd: Parsed Command
- * Return: 0 Upon Success -1 Upon Failure
+ * Echo_print -  This function executes the built-in echo command.
+ * @cmd: the Command parsed
+ *
+ * Return:  0 if successful and -1 if unsuccessful.
  */
-int print_echo(char **cmd)
+int Echo_print(char **cmd)
 {
-pid_t pid;
-int status;
-pid = fork();
-if (pid == 0)
+int Stat;
+pid_t _PID;
+
+_PID = fork();
+if (_PID == 0)
 {
 if (execve("/bin/echo", cmd, environ) == -1)
 {
@@ -49,15 +55,15 @@ return (-1);
 }
 exit(EXIT_FAILURE);
 }
-else if (pid < 0)
+else if (_PID < 0)
 {
 return (-1);
 }
 else
 {
 do {
-waitpid(pid, &status, WUNTRACED);
-} while (!WIFEXITED(status) && !WIFSIGNALED(status));
+waitpid(_PID, &Stat, WUNTRACED);
+} while (!WIFEXITED(Stat) && !WIFSIGNALED(Stat));
 }
 return (1);
 }
