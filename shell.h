@@ -119,9 +119,9 @@ int command_path(char **cmd);
 
 /************************ Print Utility Functions ************************/
 /******printers.c*******/
-int print_echo(char **cmd);
-void print_number_int(int n);
-void print_number(unsigned int n);
+int Echo_print(char **cmd);
+void Number_int_print(int Num);
+void Number_print(unsigned int Num);
 
 /****************** Environment Management Functions **********************/
 /****environment_handlers.c*****/

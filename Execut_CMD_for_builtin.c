@@ -80,12 +80,12 @@ char *_PATH;
 
 if (F_strncmp(cmd[1], "$?", 2) == 0)
 {
-print_number_int(stat_cmd);
+Number_int_print(stat_cmd);
 Shell_PRINT("\n");
 }
 else if (F_strncmp(cmd[1], "$$", 2) == 0)
 {
-print_number(_PID);
+Number_print(_PID);
 Shell_PRINT("\n");
 }
 else if (F_strncmp(cmd[1], "$PATH", 5) == 0)
@@ -97,7 +97,7 @@ free(_PATH);
 }
 else
 {
-return (print_echo(cmd));
+return (Echo_print(cmd));
 }
 return (1);
 }
