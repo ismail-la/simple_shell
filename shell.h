@@ -94,9 +94,9 @@ unsigned int Delim_check(char c, const char *str);
 void _prompt(void);
 /******Custom_getline.c*******/
 char *readgetline();
-char *input_NL(char *string);
+char *input_NL(char *Str_Handle);
 char *str_space(char *str);
-void hashtag_Handler(char *buff);
+void hashtag_Handler(char *In_buf);
 
 /********************* Help Information Handlers *****************************/
 /******builtin_help_handlers_2.c*******/
