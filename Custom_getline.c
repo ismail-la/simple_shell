@@ -2,66 +2,66 @@
 
 /**
  * readgetline - read input from STDIN
- * Return: the input on buffer
+ * Return: the input on buff
  *
  */
 char *readgetline()
 {
-char c = 0, *buffer, *R_BUFF;
-int size_buff = SIZEBUF, a, READ;
-
-
-buffer = malloc(size_buff);
-if (buffer == NULL)
+char b = 0, *buff, *R_BUFF;
+int size_buff = SIZEBUF, READ;
+int a = 0;
+buff = malloc(size_buff);
+if (buff == NULL)
 {
-free(buffer);
+free(buff);
 return (NULL);
 }
-for (a = 0; c != EOF && c != '\n'; a++)
+/*********loop**********/
+while (b != EOF && b != '\n')
 {
 fflush(stdin);
+
 /**********reading*******/
-READ = read(STDIN_FILENO, &c, 1);
+READ = read(STDIN_FILENO, &b, 1);
 if (READ == 0)
 {
-free(buffer);
+free(buff);
 exit(EXIT_SUCCESS);
 }
-buffer[a] = c;
-if (buffer[0] == '\n')
-return (input_NL(buffer));
+buff[a] = b;
+if (buff[0] == '\n')
+return (input_NL(buff));
 if (a >= size_buff)
 {
-buffer = realloc(buffer, (size_buff + 2));
-if (buffer == NULL)
+buff = realloc(buff, (size_buff + 2));
+if (buff == NULL)
 {
-free(buffer);
+free(buff);
 return (NULL);
 }
 }
+a++;
 }
-buffer[a] = '\0';
-R_BUFF = str_space(buffer);
-free(buffer);
+buff[a] = '\0';
+R_BUFF = str_space(buff);
+free(buff);
 hashtag_Handler(R_BUFF);
 return (R_BUFF);
 }
-
 /**
- * hashtag_Handler - function that removes everything after '#'
- * @Input_buff: input buffer
+ * hashtag_Handler - function that removes everything after #
+ * @In_buf: input buffer
  * Return: no_void
  */
-void hashtag_Handler(char *Input_buff)
+void hashtag_Handler(char *In_buf)
 {
 int j;
 
-for (j = 0; Input_buff[j] != '\0'; j++)
+for (j = 0; In_buf[j] != '\0'; j++)
 {
-if (Input_buff[j] == '#' && Input_buff[j - 1] ==
-' ' && Input_buff[j + 1] == ' ')
+if (In_buf[j] == '#' && In_buf[j - 1] == ' ' && In_buf[j + 1] == ' ')
 {
-Input_buff[j] = '\0';
+In_buf[j] = '\0';
 }
 }
 }
@@ -95,9 +95,7 @@ free(buff);
 return (NULL);
 }
 for (i = 0; str[i] == ' '; i++)
-{
 ;
-}
 for (; str[i + 1] != '\0'; i++)
 {
 buff[j] = str[i];
