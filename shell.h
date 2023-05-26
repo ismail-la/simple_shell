@@ -64,46 +64,46 @@ void array_rev(char *array, int length);
 int intlen(int n);
 
 /************************ Error Management Functions *******************/
-/********error_handlers.c********/
-void Error_print_custom(char **argv, int c, char **cmd);
-void Error_display(char *input, int counter, char **argv);
+/********handler_Error.c********/
+void Error_print_custom(char **argv, int b, char **cmd);
+void Error_display(char *user_INPUT, int timer, char **argv);
 void Error_print_file(char **argv, int b);
 /*******stdin_command_execute.c******/
 int fork_check_cmd(char **cmd, char *input, int c, char **argv);
-void Handle_signal(int sig);
+void Handle_signal(int signal);
 
 
 /******command_parser.c*********/
-char **parse_command(char *input);
+char **parse_command(char *S_INPUT);
 
 /**************************** File Input Handlers *************************/
 /***file_argument_handlers.c*****/
 void File_statusExit(char **cmd, char *line, FILE *fd);
-void file_parseExec(char *line, int count, FILE *fp, char **argv);
+void file_parseExec(char *line, int count, FILE *File_d, char **argv);
 void readFD(char *File_name, char **argv);
 
 /*************************** Utility and Input Functions *********************/
 /*******F_separator.c******/
-char **Function_separator(char *input);
+char **Function_separator(char *Stdin_Input);
 /*******history_rec.c******/
 int F_history(char *input);
 /******_strtok.c*******/
-char *F_strtok(char *str, const char *delim);
-unsigned int Delim_check(char c, const char *str);
+char *F_strtok(char *string, const char *d);
+unsigned int Delim_check(char ch, const char *delim_str);
 /******prompt.c*******/
 void _prompt(void);
 /******Custom_getline.c*******/
 char *readgetline();
 char *input_NL(char *Str_Handle);
 char *str_space(char *str);
-void hashtag_Handler(char *In_buf);
+void hashtag_Handler(char *Input_buff);
 
 /********************* Help Information Handlers *****************************/
 /******builtin_help_handlers_2.c*******/
 void help_for_env(void);
 void help_for_setenv(void);
 void help_for_unsetenv(void);
-int display_help(char **cmd, __attribute__((unused))int st);
+int display_help(char **command, __attribute__((unused))int st);
 /******builtin_help_handlers_1.c*******/
 void help_help(void);
 void help_for_exit(void);
@@ -125,19 +125,19 @@ void Number_print(unsigned int Num);
 
 /****************** Environment Management Functions **********************/
 /****environment_handlers.c*****/
-void mem_free_env(char **env);
-void env_array(char **envi);
+void mem_free_env(char **_Env);
+void env_array(char **array_Env);
 extern char **environ;
 
 /******* Built-in Command Processors and Execution **************************/
 /*****builtin_command_execute.c********/
 int E_disp(__attribute__((unused)) char **cmd, __attribute__((unused)) int st);
 int Dir_change(char **cmd, __attribute__((unused))int st);
-int Echo_exec_bul(char **cmd, int st);
+int Echo_exec_bul(char **cmd, int stat_cmd);
 int D_History(__attribute__((unused))char **c, __attribute__((unused)) int st);
 /******builtin_command_handlers.c*****/
 void Status_exit__bul(char **cmd, char *input, char **argv, int c, int stat);
-int handle_builtin(char **cmd, int st);
+int handle_builtin(char **cmd, int status);
 int cmd_check_builtin(char **cmd);
 
 
